@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MangallWedding.com</title>
+
+<link rel="stylesheet" href="style.css">
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+<script>
+  function SubForm (){
+    $.ajax({
+      url:"https://api.apispreadsheets.com/data/13703/",
+      type:"post",
+      data:$("#myForm").serializeArray(),
+      success: function(){
+        alert("Form Data Submitted :)")
+      },
+      error: function(){
+        alert("There was an error :(")
+      }
+    });
+  }
+</script>
+</head>
+<body>
+  <h1 class="g">BIO DATA FORM<h1>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<form  class="top-container" id="myForm" method="get">
+
+
+
+
+
+
+
+  Name:&nbsp;<input type ="text" id="fname" class="input-field" name="full name" value="" placeholder="Enter your Full Name" required><br><br>
+  Gender: &nbsp;<input type="text" id="lname" class="input-field" name="Gender" value="" placeholder="e.g:Male/Female" required><br><br>
+  Height:&nbsp;<input type="text" id="H" class="input-field" name="Height" value="" placeholder="Enter Height in cm" required><br><br>
+  Complexion: &nbsp;<input type="text" id="CP" class="input-field" name="Complexion" value="" placeholder="Enter Complexion" required><br><br>
+  BirthDate & Time:&nbsp;<input type="text" class="input-field" id="BD" name="BirthDate" value="" placeholder="eh.DD/MM/YY-HH/MM/SS"><br><br>
+  BirthPlace:&nbsp; <input type="text" id="BP" class="input-field" name="BirthPlace" value="" placeholder="Birth Place" requied><br><br>
+  Education: &nbsp;<input type="text" id="ED" class="input-field" name="Education" value="" placeholder="Enter Education" required><br><br>
+  Occupation:&nbsp; <input type="text" id="OC" class="input-field" name="Occupation" value="" placeholder="Enter Occupation"><br><br>
+  Income: &nbsp;<input type="text" id="IN" class="input-field" name="Income" value="" placeholder="eg./per annum"><br><br>
+  Upload Image:&nbsp; <input type="file" id="IM"class="input-field" name="Image"  ><br><br>
+  GrandFather: &nbsp;<input type="text" id="GF" class="input-field" name="GrandFather" placeholder="Enter Name" ><br><br>
+  GrandMother:&nbsp; <input type="text" id="GM" class="input-field" name="GrandMother"  placeholder="Enter Name"><br><br>
+  Father Name:&nbsp; <input type="text" id="FN" class="input-field" name="Father" placeholder="Enter Name" ><br><br>
+  Mother Name:&nbsp; <input type="text" id="MN"class="input-field"  name="Mother" placeholder="Enter Name"><br><br>
+  Brother/Sister NAME:&nbsp; <input type="text" id="BS" class="input-field" name="Brother/Sister" placeholder="Enter Name" ><br><br>
+  Address: &nbsp;<input type="textarea" style="height:50px;resize:vertical;" id="AD" class="input-field"name="Address" placeholder="Address"  ><br><br>
+  Mobile No: &nbsp;<input type="text" id="MB" class="input-field" name="MobileNumber" placeholder="your number" ><br><br>
+  Email:&nbsp; <input type="text" id="EM" class="input-field" name="Email" placeholder="eg.example@gmail.com" ><br><br>
+
+
+  <center><button onclick='SubForm()' id="submit">Submit</button></center><br>
+  <center><button onclick="genPDF()" id="pdf">Download PDF</button></center>
+
+
+</form>
+
+
+<script class="func">
+function genPDF() {
+     let inputVal = "NAME:" +document.getElementById("fname").value;
+     let inputVal2 = "GENDER:" +document.getElementById("lname").value;
+     let inputVal3 = "HEIGHT:" +document.getElementById("H").value;
+     let inputVal4 = "COMPLEXION:" +document.getElementById("CP").value;
+     let inputVal5 = "BIRTHDATE:" +document.getElementById("BD").value;
+     let inputVal6 = "BIRTHPLACE:" +document.getElementById("BP").value;
+     let inputVal7 = "EDUCATION:" +document.getElementById("ED").value;
+     let inputVal8 = "OCCUPATION:" +document.getElementById("OC").value;
+     let inputVal9 = "INCOME:" +document.getElementById("IN").value;
+     let inputVal10 = "UPLOAD IMAGE:" +document.getElementById("IM").value;
+     let inputVal11 = "GRANDFATHER:" +document.getElementById("GF").value;
+     let inputVal12 = "GRANDMOTHER:" +document.getElementById("GM").value;
+     let inputVal13 = "FATHER NAME:" +document.getElementById("FN").value;
+     let inputVal14 = "MOTHER NAME:" +document.getElementById("MN").value;
+     let inputVal15 = "BROTHER/SISTER NAME:" +document.getElementById("BS").value;
+     let inputVal16 = "ADDRESS:" +document.getElementById("AD").value;
+     let inputVal17 = "MOBILE NO:" +document.getElementById("MB").value;
+     let inputVal18 = "EMAIL:" +document.getElementById("EM").value;
+
+
+
+
+  var doc = new jsPDF();
+  doc.text(20, 20,inputVal);
+
+  doc.text(20, 40, inputVal2);
+  doc.text(20, 50, inputVal3);
+  doc.text(20, 60, inputVal4);
+  doc.text(20, 70, inputVal5);
+  doc.text(20, 80, inputVal6);
+  doc.text(20, 90, inputVal7);
+  doc.text(20, 100, inputVal8);
+  doc.text(20, 120, inputVal9);
+  doc.text(20, 130, inputVal10);
+  doc.text(20, 140, inputVal12);
+  doc.text(20, 150, inputVal13);
+  doc.text(20, 160, inputVal14);
+  doc.text(20, 170, inputVal15);
+  doc.text(20, 180, inputVal16);
+  doc.text(20, 190, inputVal17);
+
+
+  doc.text(20, 200, inputVal18);
+
+
+
+
+
+
+
+  doc.save('form.pdf');
+
+}
+</script>
+
+</body>
+</html>
